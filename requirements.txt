@@ -1,0 +1,5 @@
+PyYAML>=6.0
+
+# Optional: enables LLM-generated summaries.
+# Without it the tool falls back to deterministic templates.
+anthropic>=0.40.0
