@@ -1,0 +1,159 @@
+[
+  {
+    "deal_id": "DD-1017",
+    "slug": "standard",
+    "account_name": "Northwind Analytics",
+    "deal_type": "new_business",
+    "term_months": 12,
+    "payment_terms": "net_30",
+    "competitor": null,
+    "notes": "Clean land. Rep ran it through the standard configurator.",
+    "lines": [
+      { "sku": "SEAT_PRO", "quantity": 18, "discount_pct": 8 }
+    ]
+  },
+  {
+    "deal_id": "DD-1024",
+    "slug": "at_threshold",
+    "account_name": "Calder Freight Systems",
+    "deal_type": "new_business",
+    "term_months": 24,
+    "payment_terms": "net_45",
+    "competitor": "Incumbent homegrown tool",
+    "notes": "Buyer pushed for 20% to sign before their fiscal close.",
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 20 },
+      { "sku": "SEAT_ENTERPRISE", "quantity": 25, "discount_pct": 20 },
+      { "sku": "SVC_ONBOARDING", "quantity": 1, "discount_pct": 25 }
+    ]
+  },
+  {
+    "deal_id": "DD-1042",
+    "slug": "exception",
+    "account_name": "Rhodes Medical Group",
+    "deal_type": "new_business",
+    "term_months": 36,
+    "payment_terms": "net_90",
+    "competitor": "Two-vendor bake-off, losing on price",
+    "notes": "Regulated buyer. Security review already in flight. Rep is asking for 38% to win.",
+    "committed_minimum": 40000,
+    "non_standard_terms": [
+      "custom_security_addendum",
+      "termination_for_convenience",
+      "price_hold_beyond_term"
+    ],
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 38 },
+      { "sku": "SEAT_ENTERPRISE", "quantity": 60, "discount_pct": 38 },
+      { "sku": "USAGE_API", "committed_units": 40, "discount_pct": 20 },
+      { "sku": "SVC_ONBOARDING", "quantity": 1, "discount_pct": 40 }
+    ]
+  },
+  {
+    "deal_id": "DD-1055",
+    "slug": "complex_ramp",
+    "account_name": "Brightline Retail",
+    "deal_type": "new_business",
+    "term_months": 36,
+    "payment_terms": "net_60",
+    "competitor": "Displacing a legacy platform mid-contract",
+    "notes": "Customer is double-paying for nine months during migration. Wants a soft first year.",
+    "committed_minimum": 60000,
+    "ramp": [
+      { "period": "Year 1", "annual_amount": 90000 },
+      { "period": "Year 2", "annual_amount": 240000 },
+      { "period": "Year 3", "annual_amount": 300000 }
+    ],
+    "non_standard_terms": ["custom_payment_schedule"],
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 22 },
+      { "sku": "SEAT_ENTERPRISE", "quantity": 80, "discount_pct": 25 },
+      { "sku": "USAGE_STORAGE", "committed_units": 600, "discount_pct": 15 },
+      { "sku": "SVC_ONBOARDING", "quantity": 2, "discount_pct": 30 }
+    ]
+  },
+  {
+    "deal_id": "DD-1061",
+    "slug": "blocked_mfn",
+    "account_name": "Atlas Global Logistics",
+    "deal_type": "new_business",
+    "term_months": 36,
+    "payment_terms": "net_60",
+    "competitor": "Enterprise incumbent",
+    "notes": "Procurement is insisting on MFN pricing and uncapped liability. Rep wants to know if there is any version of yes.",
+    "non_standard_terms": ["mfn_clause", "uncapped_liability", "custom_sla"],
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 30 },
+      { "sku": "SEAT_ENTERPRISE", "quantity": 150, "discount_pct": 32 },
+      { "sku": "SVC_PREMIUM_SUPPORT", "quantity": 1, "discount_pct": 15 }
+    ]
+  },
+  {
+    "deal_id": "DD-1073",
+    "slug": "flat_renewal",
+    "account_name": "Perrin Insurance",
+    "deal_type": "renewal",
+    "term_months": 12,
+    "payment_terms": "net_30",
+    "uplift_pct": 0,
+    "notes": "CSM wants a flat renewal to avoid a churn conversation.",
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 12 },
+      { "sku": "SEAT_PRO", "quantity": 45, "discount_pct": 12 }
+    ]
+  },
+  {
+    "deal_id": "DD-1088",
+    "slug": "usage_undercommitted",
+    "account_name": "Meridian Data Co",
+    "deal_type": "migration",
+    "term_months": 24,
+    "payment_terms": "net_30",
+    "committed_minimum": 9000,
+    "notes": "Moving from seat-based to usage-based. Customer will not commit to a meaningful minimum.",
+    "lines": [
+      { "sku": "USAGE_API", "committed_units": 15, "discount_pct": 18 },
+      { "sku": "USAGE_STORAGE", "committed_units": 120, "discount_pct": 18 }
+    ]
+  },
+  {
+    "deal_id": "DD-1094",
+    "slug": "below_floor",
+    "account_name": "Halcyon Public Sector",
+    "deal_type": "new_business",
+    "term_months": 12,
+    "payment_terms": "net_30",
+    "competitor": "Lowest-bid public tender",
+    "notes": "Tender is price-scored. Rep is asking for 52% to be competitive.",
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 52 },
+      { "sku": "SEAT_PRO", "quantity": 200, "discount_pct": 52 }
+    ]
+  },
+  {
+    "deal_id": "DD-1102",
+    "slug": "expansion",
+    "account_name": "Northwind Analytics",
+    "deal_type": "expansion",
+    "term_months": 8,
+    "payment_terms": "net_30",
+    "notes": "Co-termed expansion onto the existing 12 month agreement.",
+    "non_standard_terms": [],
+    "lines": [
+      { "sku": "SEAT_PRO", "quantity": 22, "discount_pct": 15 }
+    ]
+  },
+  {
+    "deal_id": "DD-1110",
+    "slug": "services_heavy",
+    "account_name": "Fairmont Manufacturing",
+    "deal_type": "new_business",
+    "term_months": 12,
+    "payment_terms": "net_30",
+    "notes": "Heavy implementation scope. Three plants, phased rollout.",
+    "lines": [
+      { "sku": "PLATFORM_BASE", "quantity": 1, "discount_pct": 10 },
+      { "sku": "SVC_ONBOARDING", "quantity": 4, "discount_pct": 15 }
+    ]
+  }
+]
