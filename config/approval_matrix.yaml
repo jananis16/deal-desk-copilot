@@ -1,0 +1,107 @@
+# Approval matrix and delegation of authority.
+#
+# Tiers are evaluated in order. A deal lands in the first tier whose limits it
+# satisfies. If it exceeds every tier, it escalates to executive review.
+#
+# The point of a matrix like this is that most deals should never reach a human.
+# Tier 0 exists so that reps can close clean business without waiting on anyone.
+
+currency: USD
+
+approval_tiers:
+  - name: rep_self_serve
+    label: "Auto-approved"
+    max_discount_pct: 10
+    max_tcv: 50000
+    max_term_months: 12
+    approvers: []
+    sla_hours: 0
+    notes: "Standard paper, standard terms. No human review."
+
+  - name: sales_manager
+    label: "Sales Manager"
+    max_discount_pct: 20
+    max_tcv: 150000
+    max_term_months: 24
+    approvers: [sales_manager]
+    sla_hours: 4
+
+  - name: deal_desk
+    label: "Deal Desk"
+    max_discount_pct: 30
+    max_tcv: 500000
+    max_term_months: 36
+    approvers: [deal_desk, sales_director]
+    sla_hours: 8
+
+  - name: vp_sales_finance
+    label: "VP Sales + Finance"
+    max_discount_pct: 40
+    max_tcv: 1500000
+    max_term_months: 36
+    approvers: [vp_sales, finance_director, deal_desk]
+    sla_hours: 24
+
+  - name: executive
+    label: "CRO + CFO"
+    max_discount_pct: 100
+    max_tcv: null          # no ceiling
+    max_term_months: 60
+    approvers: [cro, cfo, deal_desk]
+    sla_hours: 48
+    notes: "Escalation of last resort. Requires written justification."
+
+# Hard policy limits. Breaching these produces a blocking exception regardless
+# of which tier the deal would otherwise fall into.
+policy_limits:
+  absolute_discount_floor_pct: 45
+  max_term_months: 60
+  min_committed_minimum_for_usage: 25000
+  standard_payment_terms: net_30
+  extended_payment_terms_allowed: [net_45, net_60]
+  # Anything beyond net_60 is a working-capital decision, not a sales decision.
+  payment_terms_requiring_finance: [net_75, net_90]
+
+# Ramp deals: a ramp that starts too low is a discount wearing a disguise.
+# First-period ACV must be at least this share of steady-state ACV.
+ramp_rules:
+  min_first_period_pct_of_steady_state: 40
+  max_ramp_periods: 3
+
+# Non-standard terms and who has to look at them.
+# "blocking" means the deal cannot proceed on standard paper.
+non_standard_terms:
+  termination_for_convenience:
+    reviewers: [legal, finance_director]
+    blocking: false
+    rationale: "Revenue is no longer contracted for the full term. Finance needs to know before it lands in forecast."
+
+  uncapped_liability:
+    reviewers: [legal, cfo]
+    blocking: true
+    rationale: "Outside standard risk tolerance. Requires executive sign-off on the exposure."
+
+  custom_sla:
+    reviewers: [legal, product, support_lead]
+    blocking: false
+    rationale: "Someone has to be able to actually deliver the commitment."
+
+  mfn_clause:
+    reviewers: [legal, cro, cfo]
+    blocking: true
+    rationale: "Most-favoured-nation pricing constrains every future deal in the segment."
+
+  custom_security_addendum:
+    reviewers: [security, legal]
+    blocking: false
+    rationale: "Standard for regulated buyers. Route early, it is usually the long pole."
+
+  price_hold_beyond_term:
+    reviewers: [finance_director]
+    blocking: false
+    rationale: "Caps renewal uplift. Price it in now or lose it later."
+
+  custom_payment_schedule:
+    reviewers: [finance_director]
+    blocking: false
+    rationale: "Affects cash collection timing."

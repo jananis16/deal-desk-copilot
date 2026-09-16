@@ -1,0 +1,70 @@
+# Product catalog and pricing policy for a fictional B2B SaaS company.
+# All figures are invented.
+
+products:
+  PLATFORM_BASE:
+    name: "Platform (base subscription)"
+    model: platform_fee
+    list_price_annual: 60000
+    max_discount_pct: 35
+
+  SEAT_PRO:
+    name: "Pro seat"
+    model: seat
+    list_price_annual: 1800
+    max_discount_pct: 30
+
+  SEAT_ENTERPRISE:
+    name: "Enterprise seat"
+    model: seat
+    list_price_annual: 3000
+    max_discount_pct: 30
+
+  USAGE_API:
+    name: "API calls (per 1M)"
+    model: usage
+    list_price_unit: 400
+    max_discount_pct: 25
+    requires_committed_minimum: true
+
+  USAGE_STORAGE:
+    name: "Storage (per TB / month)"
+    model: usage
+    list_price_unit: 95
+    max_discount_pct: 25
+    requires_committed_minimum: true
+
+  SVC_ONBOARDING:
+    name: "Implementation services"
+    model: one_time
+    list_price: 25000
+    max_discount_pct: 50
+    notes: "Discounting services is cheaper than discounting recurring revenue."
+
+  SVC_PREMIUM_SUPPORT:
+    name: "Premium support"
+    model: platform_fee
+    list_price_annual: 18000
+    max_discount_pct: 20
+
+# Deal-type specific guidance applied on top of product limits.
+deal_type_policy:
+  new_business:
+    target_discount_pct: 12
+    notes: "Land discount is precedent. It follows the account forever."
+  expansion:
+    target_discount_pct: 8
+    notes: "Expansion should not be cheaper per unit than the original land."
+  renewal:
+    target_discount_pct: 0
+    uplift_target_pct: 7
+    notes: "Flat renewal is a loss against inflation. Zero uplift needs a reason."
+  migration:
+    target_discount_pct: 15
+    notes: "Moving a customer between pricing models. Protect total contract value, not unit price."
+
+# Thresholds that trigger an advisory note rather than an approval requirement.
+advisory_flags:
+  discount_above_target_pct_delta: 10
+  services_ratio_warning_pct: 30   # services > 30% of TCV is a delivery risk
+  single_year_term_on_enterprise: true
